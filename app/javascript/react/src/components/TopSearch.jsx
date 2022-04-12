@@ -2,8 +2,14 @@ import * as React from 'react';
 
 const Business = ({item}) =>  {
 	return (
-		<div className='business'>
-			Business Name {item.name}
+		<div className='business' style={{clear: 'both'}}>
+			<div className='image' style={{float: 'left', marginTop: '5px'}}>
+				<img src={item.image} style={{maxHeight: '200px', maxWidth: '200px'}}/>
+			</div>
+			<div className='info'>
+			<a href={item.url}>{item.name}</a> Price: {item.price}<br/>
+			{item.categories.join(', ')} 
+			</div>
 		</div>
 	);
 }
@@ -57,6 +63,7 @@ class TopSearch extends React.Component {
 
 	render() {
 		return (
+		  <div>
 			<div className='top-search'>
 				<input
 				  name="city"
@@ -92,6 +99,10 @@ class TopSearch extends React.Component {
 				)}
 
 			</div>
+			<div style={{clear: 'both', marginTop: '15px'}}>
+				Powered by <a href="https://yelp.com">Yelp</a>
+			</div>
+		  </div>
 		);
 	}
 }
