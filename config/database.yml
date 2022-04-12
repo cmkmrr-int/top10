@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: hk_bootstrap_hw_development
+  database: top10_dev
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: hk_bootstrap_hw_test
+  database: top10_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: hk_bootstrap_hw_production
-  username: hk_bootstrap_hw
-  password: <%= ENV["HK_BOOTSTRAP_HW_DATABASE_PASSWORD"] %>
+  database: top10
+  username: top10
+  password: <%= ENV["TOP10_DATABASE_PASSWORD"] %>
