@@ -33,8 +33,6 @@ class TopSearch extends React.Component {
 	}
 
 	handleSubmit(event) {
-		console.log("Looking in city " + this.state.value);
-
 		const reqOpts = {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -70,6 +68,7 @@ class TopSearch extends React.Component {
 				  type="text"
 				  placeholder="City..."
 				  onChange={this.handleChange}
+				  onKeyPress={event => event.key === 'Enter' && this.handleSubmit(event)}
 				  value={this.state.value} />
 				<button onClick={this.handleSubmit}>Find Top 10</button>
 
