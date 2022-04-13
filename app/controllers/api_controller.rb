@@ -5,21 +5,10 @@ class ApiController < ApplicationController
   def getTop10ByCity
     searchCity = params[:searchCity]
 
-    Rails.logger.info params
-
-    if searchCity == 'a' then
-      render json: {
-        items: []
-      }
-
-    elsif searchCity == 'b' then
-      render "hello world"
-    else
-      results = searchByCity(searchCity)
-      render json: {
-        items: results
-      }
-    end
+    results = searchByCity(searchCity)
+    render json: {
+      items: results
+    }
   end
 
 end

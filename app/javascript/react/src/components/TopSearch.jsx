@@ -33,6 +33,18 @@ class TopSearch extends React.Component {
 	}
 
 	handleSubmit(event) {
+		const searchCity = this.state.value;
+		if (searchCity.length < 2) {
+			this.setState({
+				error: {message: "Invalid search term"},
+				searchResults: null,
+				isLoaded: true
+			});
+			return;
+		}
+
+
+
 		const reqOpts = {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -51,7 +63,7 @@ class TopSearch extends React.Component {
 			  },
 			  (error) => {
 				  this.setState({
-					  error,
+					  error: error,
 					  isLoaded: true,
 					  searchResults: null
 				  })
@@ -73,7 +85,7 @@ class TopSearch extends React.Component {
 				<button onClick={this.handleSubmit}>Find Top 10</button>
 
 				{this.state.error ? (
-					<div className='search-error'>Error while searching: {this.state.error.message}</div>
+					<div className='search-error'>Error while searching -- {this.state.error.message}</div>
 				) : (
 					<div>
 					{!this.state.isLoaded ? (
